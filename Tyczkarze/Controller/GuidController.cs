@@ -22,7 +22,6 @@ namespace Tyczkarze.Controller
             athleteService = new AthleteService(context);
             _context = context;
         }
-
         // GET: api/guid/id
         [HttpPost("{id}")]
         public ActionResult<Athlete> RemoveAthleteGuid(Int32 id)
@@ -34,7 +33,6 @@ namespace Tyczkarze.Controller
             }
             return athlete;
         }
-
 
         // POST: api/guid
         [HttpPost]
