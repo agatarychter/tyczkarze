@@ -14,10 +14,13 @@ namespace Tyczkarze.Controller
     [ApiController]
     public class PoleController : ControllerBase
     {
-        private readonly IPoleService poleService;
-        private readonly ApplicationDbContext _context;
-
         public PoleController(ApplicationDbContext context)
+        {
+            poleService = new PoleService(context);
+            _context = context;
+        }
+        private readonly IPoleService poleService;
+        private readonly ApplicationDbContext _context;        public PoleController(ApplicationDbContext context)
         {
             poleService = new PoleService(context);
             _context = context;

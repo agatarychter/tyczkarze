@@ -24,8 +24,6 @@ namespace Tyczkarze.Controller
             contestService = new ContestService(context);
             _context = context;
         }
-
-        // GET: api/Contest/id(idCompetition)
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Contest>> GetContestByCompetitionID(Int32 id)
         {
@@ -56,7 +54,7 @@ namespace Tyczkarze.Controller
             {
                 obj = contestService.Update(contest);
                 if (obj == null)
-                    return NoContent();
+                    return NoContent(   );
             }
             else
             {
@@ -65,7 +63,6 @@ namespace Tyczkarze.Controller
             return Ok(obj);
         }
 
-        // GET: api/contest/contest?idAthlete=
         [HttpGet]
         [Route("contest")]
         public Dictionary<string, List<ContestWithCompetitiontDTO>> GetDictionaryContestForAthlete(Int32 idAthlete)

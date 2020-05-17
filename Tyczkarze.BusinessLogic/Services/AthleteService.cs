@@ -17,16 +17,15 @@ namespace Tyczkarze.BusinessLogic.Services
         private readonly ApplicationDbContext _context;
         private IAthleteRepository _athleteRepository;
 
-        public AthleteService(ApplicationDbContext context)
-        {
-            _context = context;
-            _athleteRepository = new AthleteRepository(_context);
-        }
-
         public Athlete Add(Athlete entity)
         {
             var obj = _athleteRepository.Add(entity);
             return obj;
+        }
+        public AthleteService(ApplicationDbContext context)
+        {
+            _context = context;
+            _athleteRepository = new AthleteRepository(_context);
         }
 
         public void Delete(int Id)
@@ -49,11 +48,6 @@ namespace Tyczkarze.BusinessLogic.Services
             return _athleteRepository.GetByEmail(email);
         }
 
-        public Athlete GetByGuid(string guid)
-        {
-            return _athleteRepository.GetByGuid(guid);
-        }
-
         public Athlete RemoveAthleteGuid(int id)
         {
             var athlete = FindById(id);
@@ -67,6 +61,10 @@ namespace Tyczkarze.BusinessLogic.Services
                 _athleteRepository.Update(athlete);
             }
             return athlete;
+        }
+        public Athlete GetByGuid(string guid)
+        {
+            return _athleteRepository.GetByGuid(guid);
         }
 
         public Athlete Update(Athlete athlete)

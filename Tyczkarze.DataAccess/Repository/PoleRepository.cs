@@ -11,9 +11,6 @@ namespace Tyczkarze.DataAccess.Repository
     public class PoleRepository : IPoleRepository
     {
         private readonly ApplicationDbContext _context;
-
-
-
         public PoleRepository(ApplicationDbContext context)
         {
             _context = context;
@@ -26,9 +23,9 @@ namespace Tyczkarze.DataAccess.Repository
             return entity;
         }
 
-        public void Delete(int Id)
+        public void Delete(int id)
         {
-            var pole = FindById(Id);
+            var pole = FindById(id)
             if(pole != null)
             {
                 _context.Pole.Remove(pole);
@@ -48,7 +45,7 @@ namespace Tyczkarze.DataAccess.Repository
 
         public IEnumerable<Pole> GetAllByIdAthlete(int idAthlete)
         {
-            return _context.Pole.Where(x => x.IdAthlete == idAthlete).ToList();
+            return _context.Pole.Where(x => x.IdAthlete==idAthlete).ToList();
         }       
 
         public Pole Update(Pole pole)
